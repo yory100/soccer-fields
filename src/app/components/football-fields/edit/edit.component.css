@@ -1,4 +1,6 @@
-
-.container{
-    min-height: 330px;
+.container {
+  min-height: 330px;
+}
+li {
+  list-style: none;
 }

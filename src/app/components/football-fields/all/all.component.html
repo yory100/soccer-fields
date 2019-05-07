@@ -1,3 +1,27 @@
 <div class="container">
-  <p>all works</p>
+  <h2>All</h2>
+  <div *ngIf="fields">
+    <div class="row">
+      <div class="col-lg-6">
+        <ul>
+          <li *ngFor="let field of fields">
+            <h3>{{ field.name }}</h3>
+            <p>Address: {{ field.address }}</p>
+            <p>Tel: {{ field.tel }}</p>
+            <p>Open From: {{ field.openFrom }} To: {{ field.openTo }}</p>
+            <button *ngIf="auth.isAdmin()" class="btn btn-primary">Edit</button>
+            <button *ngIf="auth.isAdmin()" class="btn btn-danger">
+              Delete
+            </button>
+            <button
+              routerLink="/football-fields/edit/id:{{ field._id }}"
+              class="btn btn-success"
+            >
+              See More
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>

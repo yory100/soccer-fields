@@ -2,9 +2,10 @@
 
 // export let conf = new InjectionToken("conf");
 
-export const AppConf = { 
-    server: "http://localhost:4000",
-    api: {
-        users: '/users'
-    }
-}
+export const AppConf = {
+  server: "http://localhost:4000",
+  api: {
+    users: "/users",
+    fields: "/fields"
+  }
+};
