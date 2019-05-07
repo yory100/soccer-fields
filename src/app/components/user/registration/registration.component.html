@@ -1,0 +1,41 @@
+<section>
+  <div class="row">
+    <div class="col-lg-12 d-flex justify-content-center align-items-center container h100">
+        <form action="" #registerForm='ngForm' (submit)='register(registerForm)' class="form-group">
+          <h2>Register:</h2>
+            <input #fName='ngModel' required minlength="5" type="text" [(ngModel)]='firstName' name="firstName" placeholder="First Name"
+              class="form-control">
+            <div class="alert alert-danger" role="alert" *ngIf='fName.invalid && (fName.dirty || fName.touched)'>The name
+              should contain at least 5 symbols.</div>
+        
+            <input #lName='ngModel' required minlength="5" type="text" [(ngModel)]='lastName' name="lastName" placeholder="Last Name"
+              class="form-control">
+            <div class="alert alert-danger" role="alert" *ngIf='lName.invalid && (lName.dirty || lName.touched)'>The name
+              should contain at least 5 symbols.</div>
+        
+            <input required email #theEmail='ngModel' type="email" [(ngModel)]='email' name="email" placeholder="Email" class="form-control">
+            <div class="alert alert-danger" role="alert" *ngIf='theEmail.invalid && (theEmail.dirty || theEmail.touched)'>Invalid
+              Email!</div>
+            <br>
+            <input #uName='ngModel' required minlength="5" type="text" [(ngModel)]='username' name="username" placeholder="Username"
+              class="form-control">
+            <div class="alert alert-danger" role="alert" *ngIf='uName.invalid && (uName.dirty || uName.touched)'>Username
+              should contain at least 5 symbols.</div>
+        
+        
+            <input required minlength="5" #pass='ngModel' type="password" [(ngModel)]='password' name="password" placeholder="Password"
+              class="form-control">
+            <div class="alert alert-danger" role="alert" *ngIf='pass.invalid && (pass.dirty || pass.touched)'>Username
+              should contain at least 5 symbols.</div>
+        
+            <input #cPass='ngModel' type="password" [(ngModel)]='confirmPassword' name="confirmPassword" placeholder="Confirm Password"
+              class="form-control">
+            <div class="alert alert-danger" role="alert" *ngIf='pass.value !== cPass.value && (cPass.dirty || cPass.touched)'>Confirm
+              password doesn't match</div>
+        
+        
+            <button type="Register" class="btn btn-dark" [disabled]="!registerForm.valid">Register</button>
+          </form>
+    </div>
+  </div>
+</section>

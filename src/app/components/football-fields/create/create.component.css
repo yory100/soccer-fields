@@ -1,0 +1,15 @@
+.container {
+  min-height: 330px;
+}
+input {
+  display: block;
+  margin-bottom: 0.3rem;
+}
+label {
+  margin-bottom: 0.1rem;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+form {
+  width: 250px;
+}
