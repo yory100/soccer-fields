@@ -15,6 +15,7 @@ import { CreateComponent } from './components/football-fields/create/create.comp
 import { EditComponent } from './components/football-fields/edit/edit.component';
 import { ReservationsComponent } from './components/admin/reservations/reservations.component';
 import { AllComponent } from './components/football-fields/all/all.component';
+import { WellcomeComponent } from './components/wellcome/wellcome.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AllComponent } from './components/football-fields/all/all.component';
     CreateComponent,
     EditComponent,
     ReservationsComponent,
-    AllComponent
+    AllComponent,
+    WellcomeComponent
   ],
   imports: [
     BrowserModule,

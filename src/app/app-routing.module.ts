@@ -9,8 +9,11 @@ import { EditComponent } from "./components/football-fields/edit/edit.component"
 import { AllComponent } from "./components/football-fields/all/all.component";
 
 import { ReservationsComponent } from "./components/admin/reservations/reservations.component";
+import { WellcomeComponent } from "./components/wellcome/wellcome.component";
 
 const routes: Routes = [
+  { path: "", component: WellcomeComponent },
+
   { path: "user/register", component: RegistrationComponent },
   { path: "user/login", component: LoginComponent },
   { path: "football-fields/create", component: CreateComponent },
