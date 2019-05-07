@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: "user/login", component: LoginComponent },
   { path: "football-fields/create", component: CreateComponent },
   { path: "football-fields/edit/:id", component: EditComponent },
-  // { path: 'football-fields/edit', component: EditComponent },
+  // { path: "football-fields/edit", component: EditComponent },
   { path: "football-fields/all", component: AllComponent },
   { path: "admin/reservations", component: ReservationsComponent }
 ];

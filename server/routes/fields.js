@@ -34,4 +34,17 @@ router.post("/add", (req, res) => {
     .catch(err => console.log("Error:" + err));
 });
 
+// @route   GET server/fields/id
+// @desc    Get Single field
+// @access  Public
+router.get("/id", (req, res) => {
+  let lastIndexOfId = req.headers.referer.lastIndexOf("id");
+  const id = req.headers.referer.slice(lastIndexOfId + 3);
+
+  Field.findById(id)
+    .sort({ date: -1 })
+    .then(posts => res.json(posts))
+    .catch(err => res.status(404).json({ nofieldsfound: "No field found" }));
+});
+
 module.exports = router;

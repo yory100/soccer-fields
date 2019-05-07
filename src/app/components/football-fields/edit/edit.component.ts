@@ -10,10 +10,10 @@ import { FieldService } from "../../../services/field.service";
 export class EditComponent implements OnInit {
   constructor(private fieldService: FieldService) {}
 
-  fields: Object;
+  field: Object;
   ngOnInit() {
-    this.fieldService.getAll().subscribe(data => {
-      this.fields = data;
+    this.fieldService.getById().subscribe(data => {
+      this.field = data;
     });
   }
 }

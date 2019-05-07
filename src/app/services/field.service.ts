@@ -25,13 +25,17 @@ export class FieldService {
     return this.http.get(`${this.uri}/get`);
   }
 
+  getById() {
+    return this.http.get(`${this.uri}/id`);
+  }
+
   add(field) {
     this.field = field;
     console.log(this.uri);
 
     this.http.post(`${this.uri}/add`, this.field).subscribe(res => {
       alertify.success("Your added field successfully!");
-      this.router.navigate(["/"]);
+      this.router.navigate(["/football-fields/all"]);
     });
   }
 }
