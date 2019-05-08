@@ -1,10 +1,79 @@
 <div class="container">
   <h2>Edit</h2>
   <div *ngIf="field">
-    <div class="roW">
-      <div class="col-lg-6">
-        <h3>{{ field.name }}</h3>
+    <form
+      action=""
+      class="form-group"
+      [formGroup]="editForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <input
+        type="text"
+        placeholder="Field Name"
+        class="form-control"
+        formControlName="name"
+      />
+      <span *ngIf="!editForm.get('name').valid && editForm.get('name').touched"
+        >Please enter a valid name!</span
+      >
+      <input
+        type="text"
+        placeholder="Field Address"
+        class="form-control"
+        formControlName="address"
+      />
+      <span
+        *ngIf="
+          !editForm.get('address').valid && editForm.get('address').touched
+        "
+        >Please enter a valid address!</span
+      >
+      <input
+        type="text"
+        placeholder="Telephone"
+        class="form-control"
+        formControlName="tel"
+      />
+      <span *ngIf="!editForm.get('tel').valid && editForm.get('tel').touched"
+        >Please enter a valid telephone!</span
+      >
+      <label for="open_from" class="badge badge-secondary">Open From:</label>
+      <input
+        type="time"
+        id="open_from"
+        class="form-control"
+        formControlName="openFrom"
+      />
+      <label for="open_to" class="badge badge-secondary">Open To:</label>
+      <input
+        type="time"
+        id="open_to"
+        class="form-control"
+        formControlName="openTo"
+      />
+      <div formArrayName="pictures">
+        <h4>Pictures</h4>
+        <button class="btn btn-success" (click)="onAddPicture()" type="button">
+          Add Picture
+        </button>
+        <div
+          class="form-group"
+          *ngFor="
+            let pictureControl of editForm.get('pictures').controls;
+            let i = index
+          "
+        >
+          <input type="text" class="form-control" [formControlName]="i" />
+        </div>
       </div>
-    </div>
+      <button type="submit" class="btn btn-info">Save</button>
+      <button
+        class="btn btn-danger"
+        type="button"
+        (click)="this.fieldService.deleteField()"
+      >
+        Delete
+      </button>
+    </form>
   </div>
 </div>

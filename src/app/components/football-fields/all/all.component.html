@@ -9,15 +9,12 @@
             <p>Address: {{ field.address }}</p>
             <p>Tel: {{ field.tel }}</p>
             <p>Open From: {{ field.openFrom }} To: {{ field.openTo }}</p>
-            <button *ngIf="auth.isAdmin()" class="btn btn-primary">Edit</button>
-            <button *ngIf="auth.isAdmin()" class="btn btn-danger">
-              Delete
-            </button>
             <button
+              *ngIf="auth.isAdmin()"
               routerLink="/football-fields/edit/id:{{ field._id }}"
               class="btn btn-success"
             >
-              See More!
+              Edit!
             </button>
           </li>
         </ul>

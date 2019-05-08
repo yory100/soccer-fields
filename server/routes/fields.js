@@ -49,4 +49,44 @@ router.get("/id", (req, res) => {
     .catch(err => res.status(404).json({ nofieldsfound: "No field found" }));
 });
 
+// @route  POST server/fields/edit
+// @desc Edit field
+// @access Private
+
+router.post("/edit", (req, res) => {
+  let lastIndexOfId = req.headers.referer.lastIndexOf("id");
+  const id = req.headers.referer.slice(lastIndexOfId + 3);
+  console.log(req.body);
+  console.log(req.headers.referer);
+  Field.findByIdAndUpdate(id, { $set: req.body }, function(err, result) {
+    if (err) {
+      console.log("Error:" + err);
+    }
+    // console.log("RESULT: " + result);
+    res.json("Done");
+  });
+});
+
+// @route  POST server/fields/delete
+// @desc Delete field
+// @access Private
+
+router.post("/delete", (req, res) => {
+  let lastIndexOfId = req.headers.referer.lastIndexOf("id");
+  const id = req.headers.referer.slice(lastIndexOfId + 3);
+
+  Field.findByIdAndRemove(id, (err, todo) => {
+    // As always, handle any potential errors:
+    if (err) return res.status(500).send(err);
+    // We'll create a simple object to send back with a message and the id of the document that was removed
+    // You can really do this however you want, though.
+    const response = {
+      message: "Field successfully deleted",
+      id: todo._id
+    };
+    // return res.status(200).send(response);
+    res.json("Done");
+  });
+});
+
 module.exports = router;

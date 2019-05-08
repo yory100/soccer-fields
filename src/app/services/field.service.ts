@@ -31,11 +31,39 @@ export class FieldService {
 
   add(field) {
     this.field = field;
-    console.log(this.uri);
 
     this.http.post(`${this.uri}/add`, this.field).subscribe(res => {
       alertify.success("Your added field successfully!");
       this.router.navigate(["/football-fields/all"]);
     });
+  }
+
+  edit(field) {
+    this.field = field;
+
+    this.http.post(`${this.uri}/edit`, this.field).subscribe(res => {
+      alertify.success("Your edited field successfully!");
+      // I have to find why this doesn't work
+      this.router.navigate(["/football-fields/all"]);
+    });
+    // this.router.navigate(["/football-fields/all"]);
+  }
+
+  deleteField() {
+    alertify.confirm(
+      "Confirm Title",
+      "Do you want to delete ?",
+      () => {
+        this.http.post(`${this.uri}/delete`, this.field).subscribe(res => {
+          alertify.success("You deleted the field!");
+          this.router.navigate(["/football-fields/all"]);
+        });
+      },
+      function() {
+        alertify.error("Cancel");
+      }
+    );
+
+    // this.router.navigate(["/football-fields/all"]);
   }
 }

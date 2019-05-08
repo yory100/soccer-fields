@@ -11,6 +11,8 @@ import { FieldService } from "../../../services/field.service";
 export class CreateComponent implements OnInit {
   constructor(public fieldService: FieldService) {}
 
+  createForm: FormGroup;
+
   ngOnInit() {
     this.createForm = new FormGroup({
       name: new FormControl(null, Validators.required),
@@ -27,17 +29,11 @@ export class CreateComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.createForm.value);
     this.fieldService.add(this.createForm.value);
   }
 
   onAddPicture() {
     const control = new FormControl(null, Validators.required);
     (<FormArray>this.createForm.get("pictures")).push(control);
-  }
-
-  createForm: FormGroup;
-  create(form) {
-    this.fieldService.add(form.value);
   }
 }
