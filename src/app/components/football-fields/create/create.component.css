@@ -3,7 +3,7 @@
 }
 input {
   display: block;
-  margin-bottom: 0.3rem;
+  margin-top: 0.3rem;
 }
 label {
   margin-bottom: 0.1rem;
@@ -12,4 +12,7 @@ label {
 }
 form {
   width: 250px;
+}
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
 }

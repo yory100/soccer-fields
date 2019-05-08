@@ -3,46 +3,69 @@
   <form
     action=""
     class="form-group"
-    #createForm="ngForm"
-    (submit)="create(createForm)"
+    [formGroup]="createForm"
+    (ngSubmit)="onSubmit()"
   >
     <input
       type="text"
       placeholder="Field Name"
       class="form-control"
-      [(ngModel)]="name"
-      name="fieldName"
+      formControlName="name"
     />
+    <span
+      *ngIf="!createForm.get('name').valid && createForm.get('name').touched"
+      >Please enter a valid name!</span
+    >
     <input
       type="text"
       placeholder="Field Address"
       class="form-control"
-      [(ngModel)]="address"
-      name="fieldAddress"
+      formControlName="address"
     />
+    <span
+      *ngIf="
+        !createForm.get('address').valid && createForm.get('address').touched
+      "
+      >Please enter a valid address!</span
+    >
     <input
       type="text"
       placeholder="Telephone"
       class="form-control"
-      [(ngModel)]="tel"
-      name="fieldTel"
+      formControlName="tel"
     />
+    <span *ngIf="!createForm.get('tel').valid && createForm.get('tel').touched"
+      >Please enter a valid telephone!</span
+    >
     <label for="open_from" class="badge badge-secondary">Open From:</label>
     <input
       type="time"
-      name="open_from"
       id="open_from"
       class="form-control"
-      [(ngModel)]="openFrom"
+      formControlName="openFrom"
     />
     <label for="open_to" class="badge badge-secondary">Open To:</label>
     <input
       type="time"
-      name="to"
       id="open_to"
       class="form-control"
-      [(ngModel)]="openTo"
+      formControlName="openTo"
     />
+    <div formArrayName="pictures">
+      <h4>Pictures</h4>
+      <button class="btn btn-success" (click)="onAddPicture()" type="button">
+        Add Picture
+      </button>
+      <div
+        class="form-group"
+        *ngFor="
+          let pictureControl of createForm.get('pictures').controls;
+          let i = index
+        "
+      >
+        <input type="text" class="form-control" [formControlName]="i" />
+      </div>
+    </div>
     <button type="submit" class="btn btn-info">Create</button>
   </form>
 </div>

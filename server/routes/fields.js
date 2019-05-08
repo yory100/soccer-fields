@@ -18,14 +18,16 @@ router.get("/get", (req, res) => {
 
 // @route   POST /server/fields/add
 // @desc Create New Field
-// @access To be considered lately
+// @access To be considered later
 router.post("/add", (req, res) => {
+  console.log(req.body);
   const newField = new Field({
-    name: req.body.fieldName,
-    address: req.body.fieldAddress,
-    tel: req.body.fieldTel,
-    openFrom: req.body.open_from,
-    openTo: req.body.to
+    name: req.body.name,
+    address: req.body.address,
+    photos: req.body.pictures,
+    tel: req.body.tel,
+    openFrom: req.body.openFrom,
+    openTo: req.body.openTo
   });
 
   newField
