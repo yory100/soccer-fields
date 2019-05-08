@@ -7,3 +7,13 @@ li {
 button {
   margin-right: 0.3rem;
 }
+img {
+  margin: 0.3rem;
+  display: inline;
+  height: 130px;
+  width: 47%;
+  object-fit: cover;
+}
+.block {
+  display: inline;
+}

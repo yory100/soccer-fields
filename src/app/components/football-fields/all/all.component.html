@@ -4,11 +4,16 @@
     <div class="row">
       <div class="col-lg-6">
         <ul>
-          <li *ngFor="let field of fields">
+          <li *ngFor="let field of fields" class="mb-3">
             <h3>{{ field.name }}</h3>
             <p>Address: {{ field.address }}</p>
             <p>Tel: {{ field.tel }}</p>
             <p>Open From: {{ field.openFrom }} To: {{ field.openTo }}</p>
+            <div *ngIf="field.photos">
+              <div *ngFor="let pic of field.photos" class="block">
+                <img src="{{ pic }}" alt="" width="200px" />
+              </div>
+            </div>
             <button
               *ngIf="auth.isAdmin()"
               routerLink="/football-fields/edit/id:{{ field._id }}"
@@ -16,6 +21,7 @@
             >
               Edit!
             </button>
+            <hr />
           </li>
         </ul>
       </div>
