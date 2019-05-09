@@ -8,15 +8,32 @@ import { CreateComponent } from "./components/football-fields/create/create.comp
 import { EditComponent } from "./components/football-fields/edit/edit.component";
 import { AllComponent } from "./components/football-fields/all/all.component";
 
+import { AllPlayersComponent } from "./components/players/all-players/all-players.component";
+import { CreatePlayerComponent } from "./components/players/create-player/create-player.component";
+
 import { ReservationsComponent } from "./components/admin/reservations/reservations.component";
 import { WellcomeComponent } from "./components/wellcome/wellcome.component";
+import { AdminPanelComponent } from "./components/admin/admin-panel/admin-panel.component";
 
 import { AdminGuard } from "./guards/admin.guard";
 import { LoggedGuard } from "./guards/logged.guard";
 
 const routes: Routes = [
   { path: "", component: WellcomeComponent },
-
+  {
+    path: "players/all",
+    component: AllPlayersComponent
+  },
+  {
+    path: "players/create",
+    component: CreatePlayerComponent,
+    canActivate: [AdminGuard]
+  },
+  {
+    path: "admin/admin-panel",
+    component: AdminPanelComponent,
+    canActivate: [AdminGuard]
+  },
   {
     path: "user/register",
     component: RegistrationComponent,

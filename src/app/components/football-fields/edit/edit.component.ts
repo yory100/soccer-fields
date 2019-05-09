@@ -4,6 +4,8 @@ import { FormGroup, FormControl, Validators, FormArray } from "@angular/forms";
 import { FieldService } from "../../../services/field.service";
 import { Auth } from "../../../core/auth";
 
+import { Field } from "../../../models/fields/football-field";
+
 @Component({
   selector: "app-edit",
   templateUrl: "./edit.component.html",
@@ -13,16 +15,23 @@ export class EditComponent implements OnInit {
   constructor(private fieldService: FieldService, private auth: Auth) {}
 
   editForm: FormGroup;
-  field: Object = {
+  field: Field = {
     name: "",
     address: "",
-    tel: ""
+    tel: "",
+    openFrom: "",
+    openTo: ""
   };
   name: string;
 
   ngOnInit() {
     this.fieldService.getById().subscribe(data => {
-      this.field = data;
+      console.log();
+      this.field.name = data["name"];
+      this.field.address = data["address"];
+      this.field.tel = data["tel"];
+      this.field.openFrom = data["openFrom"];
+      this.field.openTo = data["openTo"];
 
       this.editForm = new FormGroup({
         name: new FormControl(this.field.name, Validators.required),

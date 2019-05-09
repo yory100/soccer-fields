@@ -1,16 +1,19 @@
 <div class="footer p-5 text-center text-white bg-dark ">
   <div>
-    <button *ngIf='!this.auth.isLogged()' class="btn ">
+    <button *ngIf="!this.auth.isLogged()" class="btn ">
       <a class="nav-link" routerLink="/user/login">Login</a>
     </button>
-    <button *ngIf='!this.auth.isLogged()' class="btn ">
+    <button *ngIf="!this.auth.isLogged()" class="btn ">
       <a class="nav-link" routerLink="/user/register">Register</a>
     </button>
-    <button class="btn "> 
+    <button class="btn ">
       <a class="nav-link" routerLink="/">Terms and conditions</a>
     </button>
-    <button *ngIf='this.auth.isLogged()' (click)="logOut()" class="btn ">
+    <button *ngIf="this.auth.isLogged()" (click)="logOut()" class="btn ">
       <a class="nav-link" routerLink="/">Logout</a>
+    </button>
+    <button *ngIf="this.auth.isAdmin()" class="btn ">
+      <a class="nav-link" routerLink="/admin/admin-panel">Admin Panel</a>
     </button>
   </div>
   <p id="footer-text">Copyright © 2019 sportarena.bg All rights reserved.</p>

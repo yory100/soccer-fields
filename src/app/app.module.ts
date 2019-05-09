@@ -16,6 +16,9 @@ import { EditComponent } from "./components/football-fields/edit/edit.component"
 import { ReservationsComponent } from "./components/admin/reservations/reservations.component";
 import { AllComponent } from "./components/football-fields/all/all.component";
 import { WellcomeComponent } from "./components/wellcome/wellcome.component";
+import { AdminPanelComponent } from "./components/admin/admin-panel/admin-panel.component";
+import { AllPlayersComponent } from './components/players/all-players/all-players.component';
+import { CreatePlayerComponent } from './components/players/create-player/create-player.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { WellcomeComponent } from "./components/wellcome/wellcome.component";
     EditComponent,
     ReservationsComponent,
     AllComponent,
-    WellcomeComponent
+    WellcomeComponent,
+    AdminPanelComponent,
+    AllPlayersComponent,
+    CreatePlayerComponent
   ],
   imports: [
     BrowserModule,
