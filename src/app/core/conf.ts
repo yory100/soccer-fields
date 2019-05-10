@@ -6,6 +6,7 @@ export const AppConf = {
   server: "http://localhost:4000",
   api: {
     users: "/users",
-    fields: "/fields"
+    fields: "/fields",
+    players: "/players"
   }
 };

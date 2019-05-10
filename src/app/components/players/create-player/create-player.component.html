@@ -1,3 +1,74 @@
 <div class="container">
   <h2>Create Player</h2>
+  <form
+    action=""
+    class="form-group"
+    [formGroup]="createForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <input
+      type="text"
+      placeholder="Player Name"
+      class="form-control"
+      formControlName="name"
+    />
+    <span
+      *ngIf="!createForm.get('name').valid && createForm.get('name').touched"
+      >Please enter a valid name!</span
+    >
+    <input
+      type="number"
+      placeholder="Player Age"
+      class="form-control"
+      formControlName="age"
+    />
+    <span *ngIf="!createForm.get('age').valid && createForm.get('age').touched"
+      >Please enter a valid age!</span
+    >
+    <input
+      type="number"
+      placeholder="Player Games"
+      class="form-control"
+      formControlName="games"
+    />
+    <span
+      *ngIf="!createForm.get('games').valid && createForm.get('games').touched"
+      >Please enter a valid number of games!</span
+    >
+    <input
+      type="number"
+      placeholder="Scored Goals"
+      class="form-control"
+      formControlName="goals"
+    />
+    <span
+      *ngIf="!createForm.get('goals').valid && createForm.get('goals').touched"
+      >Please enter a valid number of goals!</span
+    >
+    <input
+      type="number"
+      placeholder="Assists"
+      class="form-control"
+      formControlName="assists"
+    />
+    <span
+      *ngIf="
+        !createForm.get('assists').valid && createForm.get('assists').touched
+      "
+      >Please enter a valid number of assists!</span
+    >
+    <input
+      type="text"
+      placeholder="Picture URL"
+      class="form-control"
+      formControlName="picture"
+    />
+    <span
+      *ngIf="
+        !createForm.get('picture').valid && createForm.get('picture').touched
+      "
+      >Please enter a valid number of picture!</span
+    >
+    <button type="submit" class="btn btn-info">Create</button>
+  </form>
 </div>

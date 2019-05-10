@@ -17,8 +17,9 @@ import { ReservationsComponent } from "./components/admin/reservations/reservati
 import { AllComponent } from "./components/football-fields/all/all.component";
 import { WellcomeComponent } from "./components/wellcome/wellcome.component";
 import { AdminPanelComponent } from "./components/admin/admin-panel/admin-panel.component";
-import { AllPlayersComponent } from './components/players/all-players/all-players.component';
-import { CreatePlayerComponent } from './components/players/create-player/create-player.component';
+import { AllPlayersComponent } from "./components/players/all-players/all-players.component";
+import { CreatePlayerComponent } from "./components/players/create-player/create-player.component";
+import { PlayersService } from "./services/players.service";
 
 @NgModule({
   declarations: [
@@ -43,7 +44,7 @@ import { CreatePlayerComponent } from './components/players/create-player/create
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [PlayersService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
