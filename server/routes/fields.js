@@ -9,7 +9,7 @@ router.get("/test", (req, res) => res.json({ msg: "Fields Works" }));
 // @route   GET /server/fields/get
 // @desc Fetch All Fields
 // @access  Public
-router.get("/get", (req, res) => {
+router.get("/", (req, res) => {
   Field.find()
     .sort({ date: -1 })
     .then(posts => res.json(posts))
@@ -20,7 +20,6 @@ router.get("/get", (req, res) => {
 // @desc Create New Field
 // @access To be considered later
 router.post("/add", (req, res) => {
-  console.log(req.body);
   const newField = new Field({
     name: req.body.name,
     address: req.body.address,
@@ -52,12 +51,9 @@ router.get("/id", (req, res) => {
 // @route  POST server/fields/edit
 // @desc Edit field
 // @access Private
-
-router.post("/edit", (req, res) => {
+router.put("/id", (req, res) => {
   let lastIndexOfId = req.headers.referer.lastIndexOf("id");
   const id = req.headers.referer.slice(lastIndexOfId + 3);
-  console.log(req.body);
-  console.log(req.headers.referer);
   Field.findByIdAndUpdate(id, { $set: req.body }, function(err, result) {
     if (err) {
       console.log("Error:" + err);
@@ -71,7 +67,7 @@ router.post("/edit", (req, res) => {
 // @desc Delete field
 // @access Private
 
-router.post("/delete", (req, res) => {
+router.delete("/id", (req, res) => {
   let lastIndexOfId = req.headers.referer.lastIndexOf("id");
   const id = req.headers.referer.slice(lastIndexOfId + 3);
 

@@ -48,7 +48,7 @@ import { BookComponent } from "./components/football-fields/book/book.component"
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [PlayersService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

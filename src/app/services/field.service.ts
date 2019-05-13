@@ -6,6 +6,7 @@ import { Router } from "@angular/router";
 import { AppConf } from "../core/conf";
 
 import alertify from "alertifyjs";
+import { Observable } from "rxjs";
 
 @Injectable({ providedIn: "root" })
 export class FieldService {
@@ -21,8 +22,8 @@ export class FieldService {
     openTo: ""
   };
 
-  getAll() {
-    return this.http.get(`${this.uri}/get`);
+  getAll(): Observable<any> {
+    return this.http.get(`${this.uri}/`);
   }
 
   getById() {
@@ -40,8 +41,8 @@ export class FieldService {
 
   edit(field) {
     this.field = field;
-
-    this.http.post(`${this.uri}/edit`, this.field).subscribe(res => {
+    console.log("here");
+    this.http.put(`${this.uri}:id`, this.field).subscribe(res => {
       alertify.success("Your edited field successfully!");
       // I have to find why this doesn't work
       this.router.navigate(["/football-fields/all"]);

@@ -1,3 +1,13 @@
 <div class="container">
-  <h1>Players</h1>
+  <div class="row" *ngIf="players">
+    <div class="col-lg-6">
+      <div *ngFor="let player of players">
+        <h2>
+          {{ player.name }}
+        </h2>
+        <p>{{ player.age }}</p>
+        <button class="btn btn-success" *ngIf="auth.isAdmin()">Edit</button>
+      </div>
+    </div>
+  </div>
 </div>

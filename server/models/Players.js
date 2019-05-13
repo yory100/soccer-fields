@@ -7,17 +7,24 @@ const PlayerSchema = new Schema({
     type: String,
     required: true
   },
+  age: {
+    type: Number,
+    required: true
+  },
   games: {
-    type: String,
+    type: Number,
     required: true
   },
   goals: {
-    type: String,
+    type: Number,
     required: true
   },
   assists: {
-    type: String,
+    type: Number,
     required: true
+  },
+  picture: {
+    type: String
   }
 });
 

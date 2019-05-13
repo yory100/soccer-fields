@@ -1,4 +1,8 @@
 import { Component, OnInit } from "@angular/core";
+import { Player } from "@angular/core/src/render3/interfaces/player";
+
+import { PlayersService } from "../../../services/players.service";
+import { Auth } from "../../../core/auth";
 
 @Component({
   selector: "app-all-players",
@@ -6,8 +10,12 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./all-players.component.css"]
 })
 export class AllPlayersComponent implements OnInit {
-  constructor() {}
+  constructor(public playersService: PlayersService, public auth: Auth) {}
 
-  players: any[] = [];
-  ngOnInit() {}
+  players: Player[] = [];
+  ngOnInit() {
+    this.playersService.getAll().subscribe(data => {
+      this.players = data;
+    });
+  }
 }
