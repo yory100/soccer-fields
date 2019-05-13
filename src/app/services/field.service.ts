@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import { ActivatedRoute } from "@angular/router";
 
 import { Router } from "@angular/router";
 
@@ -10,9 +11,13 @@ import { Observable } from "rxjs";
 
 @Injectable({ providedIn: "root" })
 export class FieldService {
-  constructor(public router: Router, private http: HttpClient) {}
+  constructor(
+    public router: Router,
+    private http: HttpClient,
+    private route: ActivatedRoute
+  ) {}
 
-  uri = AppConf.server + AppConf.api.fields;
+  private uri = AppConf.server + AppConf.api.fields;
 
   private field = {
     name: "",
@@ -26,8 +31,8 @@ export class FieldService {
     return this.http.get(`${this.uri}/`);
   }
 
-  getById() {
-    return this.http.get(`${this.uri}/id`);
+  getById(id: string) {
+    return this.http.get(`${this.uri}/${id}`);
   }
 
   add(field) {
@@ -39,10 +44,10 @@ export class FieldService {
     });
   }
 
-  edit(field) {
+  edit(id, field) {
     this.field = field;
     console.log("here");
-    this.http.put(`${this.uri}:id`, this.field).subscribe(res => {
+    this.http.put(`${this.uri}/${id}`, this.field).subscribe(res => {
       alertify.success("Your edited field successfully!");
       // I have to find why this doesn't work
       this.router.navigate(["/football-fields/all"]);
@@ -50,20 +55,29 @@ export class FieldService {
     // this.router.navigate(["/football-fields/all"]);
   }
 
-  deleteField() {
-    alertify.confirm(
-      "Confirm Title",
-      "Do you want to delete ?",
-      () => {
-        this.http.post(`${this.uri}/delete`, this.field).subscribe(res => {
-          alertify.success("You deleted the field!");
-          this.router.navigate(["/football-fields/all"]);
-        });
-      },
-      function() {
-        alertify.error("Cancel");
-      }
-    );
+  deleteField(id) {
+    const x = id;
+    console.log(x);
+
+    // this.http.post(`${this.uri}/delete/${id}`, this.field).subscribe(res => {
+    //   this.router.navigate(["/football-fields/all"]);
+    // });
+
+    // alertify.confirm(
+    //   "Confirm Title",
+    //   "Do you want to delete ?",
+    //   () => {
+    //     this.http
+    //       .post(`${this.uri}/delete/${id}`, this.field)
+    //       .subscribe(res => {
+    //         alertify.success("You deleted the field!");
+    //         this.router.navigate(["/football-fields/all"]);
+    //       });
+    //   },
+    //   function() {
+    //     alertify.error("Cancel");
+    //   }
+    // );
 
     // this.router.navigate(["/football-fields/all"]);
   }
