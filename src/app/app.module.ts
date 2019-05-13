@@ -17,8 +17,11 @@ import { ReservationsComponent } from "./components/admin/reservations/reservati
 import { AllComponent } from "./components/football-fields/all/all.component";
 import { WellcomeComponent } from "./components/wellcome/wellcome.component";
 import { AdminPanelComponent } from "./components/admin/admin-panel/admin-panel.component";
-import { AllPlayersComponent } from './components/players/all-players/all-players.component';
-import { CreatePlayerComponent } from './components/players/create-player/create-player.component';
+import { AllPlayersComponent } from "./components/players/all-players/all-players.component";
+import { CreatePlayerComponent } from "./components/players/create-player/create-player.component";
+import { PlayersService } from "./services/players.service";
+// import { EditPlayerComponent } from "./components/players/edit-player/edit-player.component";
+import { BookComponent } from "./components/football-fields/book/book.component";
 
 @NgModule({
   declarations: [
@@ -34,7 +37,9 @@ import { CreatePlayerComponent } from './components/players/create-player/create
     WellcomeComponent,
     AdminPanelComponent,
     AllPlayersComponent,
-    CreatePlayerComponent
+    CreatePlayerComponent,
+    // EditPlayerComponent,
+    BookComponent
   ],
   imports: [
     BrowserModule,

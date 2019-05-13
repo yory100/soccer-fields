@@ -1,5 +1,5 @@
 // TODO create interface for football field
-export interface Field {
+export interface IField {
   name: string;
   address: string;
   tel: string;

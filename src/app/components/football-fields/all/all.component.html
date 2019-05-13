@@ -15,6 +15,12 @@
               </div>
             </div>
             <button
+              routerLink="/football-fields/book/id:{{ field._id }}"
+              class="btn btn-primary"
+            >
+              Book now
+            </button>
+            <button
               *ngIf="auth.isAdmin()"
               routerLink="/football-fields/edit/id:{{ field._id }}"
               class="btn btn-success"
